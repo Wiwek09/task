@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import data from '@/app/lib/dummy-data'
 import Link from 'next/link'

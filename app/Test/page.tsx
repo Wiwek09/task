@@ -1,13 +1,28 @@
 "use client"
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import data from '../lib/dummy-data';
 import Modal from '../components/Dailogue-Box/Modal';
 
 
-const Test = ({id} : { id: any}) => {
+interface TestProps {
+  id: number;
+}
+
+const Test: React.FC<TestProps> = ({id}) => {
 
   const [showModal, setShowModal] = useState(false);
-  // const [modelid, setModelId] = useState();
+  const [modelid, setModelId] = useState();
+
+  const handleClick = () => {
+    setShowModal(true);
+    // setModelId()
+  }
+
+  // useEffect(() => {
+  //  const value = data.map((el: any) => {
+
+  //  })
+  // },[showModal])
   
   return (
     <Fragment>
@@ -41,9 +56,12 @@ const Test = ({id} : { id: any}) => {
             </div>
 
             <div className='flex-1 p-2 justify-start  ' >
-              <button className='p-2 border border-[#54545433] rounded-lg ' onClick={() => setShowModal(true) } >
+              {data.map((el: any) => 
+              id === el.id &&
+              <button className='p-2 border border-[#54545433] rounded-lg ' onClick={handleClick }  >
                 <span>View Details</span>
               </button>
+              )}
             </div>
         </div>
     </div>
