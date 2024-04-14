@@ -2,7 +2,7 @@ import React from 'react'
 import data from '@/app/lib/dummy-data'
 import Link from 'next/link'
 
-const Modal = ({id, isVisible, onClose }: {id : number; isVisible : boolean ; onClose: () => void }) => {
+const Modal = ({id, isVisible, onClose }: {id : any; isVisible : boolean ; onClose: () => void }) => {
 
   if(!isVisible) return null;
 
@@ -16,21 +16,21 @@ const Modal = ({id, isVisible, onClose }: {id : number; isVisible : boolean ; on
           <div className='bg-[#c7cbd1] p-2' >
           {data.map((el : any) => 
             id === el.id &&
-            <h1 className='ml-3' >{el.service}</h1>
+            <h1 key={el.id} className='ml-3' >{el.service}</h1>
            )}
           </div>
         
            <div className='p-2' >
            {data.map((el : any) => 
                id === el.id &&
-               <h1 className='ml-3' >{el.description}</h1>
+               <h1 key={el.id} className='ml-3' >{el.description}</h1>
            )}
            </div>
 
         
            {data.map((el : any) => 
                id === el.id && el.includes !== null ?(
-               <div className='p-2' >
+               <div key={el.id} className='p-2' >
                 <h1 className='ml-3' >{el.includes}</h1>
               </div>
                ) : null 

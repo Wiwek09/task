@@ -1,13 +1,13 @@
 "use client"
-import { Fragment, useState } from 'react'
-import data from '../../lib/dummy-data'
-import Modal from '../Dailogue-Box/Modal'
+import { Fragment, useState } from 'react';
+import data from '../lib/dummy-data';
+import Modal from '../components/Dailogue-Box/Modal';
 
 
-const page = ({id} : { id: number}) => {
+const Test = ({id} : { id: any}) => {
 
   const [showModal, setShowModal] = useState(false);
-  const [modelid, setModelId] = useState();
+  // const [modelid, setModelId] = useState();
   
   return (
     <Fragment>
@@ -17,7 +17,7 @@ const page = ({id} : { id: number}) => {
                <div>
                 {data.map((el : any) => 
                   id === el.id &&
-                  <h1 className='ml-3' >{el.service}</h1>
+                  <h1 key={el.id} className='ml-3' >{el.service}</h1>
                 )}
                </div>
             </div>
@@ -26,16 +26,16 @@ const page = ({id} : { id: number}) => {
             {data.map((el : any) => 
             id === el.id &&
             (el.includes ? 
-              <div>
+              <div key={el.id} >
                 {el.includes.slice(0, 4).map((item : any,index : number) => 
-                <p className='flex space-x-2 ' >
+                <p key={index} className='flex space-x-2 ' >
                  <span>{index + 1 + "." }  </span>
                  <span>{item}</span>
                 </p>
                  )
                  }
               </div> :
-              <p>{el.description.length > 205 ? `${el.description.slice(0, 205)}...` : el.description}</p>
+              <p key={el.id} >{el.description.length > 205 ? `${el.description.slice(0, 205)}...` : el.description}</p>
             ) 
              )}
             </div>
@@ -52,4 +52,4 @@ const page = ({id} : { id: number}) => {
   )
 }
 
-export default page
+export default Test

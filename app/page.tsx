@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Test from "./components/Test/page"
+// import Image from "next/image";
+import Test from "./Test/page"
 import data from "./lib/dummy-data";
-import Modal from "./components/Dailogue-Box/Modal";
-import { Fragment } from "react";
+// import Modal from "./components/Dailogue-Box/Modal";
+// import { Fragment } from "react";
 
 export default function Home() {
   return (
