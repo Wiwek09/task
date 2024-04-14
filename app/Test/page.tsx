@@ -4,11 +4,7 @@ import data from '../lib/dummy-data';
 import Modal from '../components/Dailogue-Box/Modal';
 
 
-interface TestProps {
-  id: number;
-}
-
-const Test: React.FC<TestProps> = ({id}) => {
+const Test = ({id} : any) => {
 
   const [showModal, setShowModal] = useState(false);
   const [modelid, setModelId] = useState();
@@ -58,7 +54,7 @@ const Test: React.FC<TestProps> = ({id}) => {
             <div className='flex-1 p-2 justify-start  ' >
               {data.map((el: any) => 
               id === el.id &&
-              <button className='p-2 border border-[#54545433] rounded-lg ' onClick={handleClick }  >
+              <button key={el.id} className='p-2 border border-[#54545433] rounded-lg ' onClick={handleClick }  >
                 <span>View Details</span>
               </button>
               )}
