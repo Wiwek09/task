@@ -5,46 +5,41 @@ import Link from 'next/link'
 
 const Modal = ({id, isVisible, onClose }: {id : any; isVisible : boolean ; onClose: () => void }) => {
 
+
+  const selectedItem = data.find((el) => el.id === id);
+
   if(!isVisible) return null;
 
   return (
     <div className='fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center ' >
 
-        <div className='flex flex-col w-[50%]' >
+        <div className='flex flex-col w-[50%] rounded-md ' >
           <button className='text-white text-xl  place-self-end ' onClick={() => onClose()} >X</button>
 
           <div className=' bg-slate-300 rounded-md flex flex-col gap-4 ' >
           <div className='bg-[#c7cbd1] p-2' >
-          {data.map((el : any) => 
-            id === el.id &&
-            <h1 key={el.id} className='ml-3' >{el.service}</h1>
-           )}
+            <h1 className='ml-3' >{selectedItem?.service}</h1>
+  
           </div>
         
            <div className='p-2' >
-           {data.map((el : any) => 
-               id === el.id &&
-               <h1 key={el.id} className='ml-3' >{el.description}</h1>
-           )}
+               <h1 className='ml-3' >{selectedItem?.description}</h1>
            </div>
 
-        
-           {data.map((el : any) => 
-               id === el.id && el.includes !== null ?(
-               <div key={el.id} className='p-2' >
-                <h1 className='ml-3' >{el.includes}</h1>
+           {selectedItem?.includes && (
+            <div className="p-2 ml-3">
+              {selectedItem.includes.map((item: string, index: number) => (
+                <p key={index} className="flex space-x-2">
+                  <span>{index + 1 + '.'}</span>
+                  <span>{item}</span>
+                </p>
+              ))}
               </div>
-               ) : null 
-           )}
-
-           <div className='p-2 ml-3' >
-            <Link href={""} >Link to :</Link>
-           </div>
-
+              )}
           </div>
         </div>
     </div>
-  )
-}
+  );
+};
 
 export default Modal

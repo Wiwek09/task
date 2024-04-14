@@ -7,19 +7,14 @@ import Modal from '../components/Dailogue-Box/Modal';
 const Test = ({id} : any) => {
 
   const [showModal, setShowModal] = useState(false);
-  const [modelid, setModelId] = useState();
+  const [modelid, setModelId] = useState<number | string>();
 
-  const handleClick = () => {
+  const handleClick = (modelid: number | string) => {
     setShowModal(true);
-    // setModelId()
+    setModelId(modelid);
+    console.log(modelid)
   }
 
-  // useEffect(() => {
-  //  const value = data.map((el: any) => {
-
-  //  })
-  // },[showModal])
-  
   return (
     <Fragment>
     <div className='w-[30%] flex min-h-24 ' >
@@ -54,14 +49,14 @@ const Test = ({id} : any) => {
             <div className='flex-1 p-2 justify-start  ' >
               {data.map((el: any) => 
               id === el.id &&
-              <button key={el.id} className='p-2 border border-[#54545433] rounded-lg ' onClick={handleClick }  >
+              <button key={el.id} className='p-2 border border-[#54545433] rounded-lg ' onClick={() => handleClick(el.id)}  >
                 <span>View Details</span>
               </button>
               )}
             </div>
         </div>
     </div>
-    <Modal id={data[0].id} isVisible={showModal} onClose={() => setShowModal(false)} />
+    <Modal id={modelid} isVisible={showModal} onClose={() => setShowModal(false)} />
   </Fragment>
   )
 }
