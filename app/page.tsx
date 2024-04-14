@@ -6,7 +6,7 @@ export default function Home() {
   return (
        <div className=" flex justify-center gap-12" >
        {data.map((item) => 
-       <Test id={item.id} />
+       <Test key={item.id} id={item.id} />
       )}
        </div>
 
